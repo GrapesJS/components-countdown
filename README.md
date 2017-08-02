@@ -8,11 +8,16 @@ Simple countdown component for GrapesJS Editor
 # [Demo](http://grapesjs.com/demo.html)
 
 
+
+
+
 ## Summary
 
 * Plugin name: `gjs-component-countdown`
 * Components: `countdown`
 * Blocks: `countdown`
+
+
 
 
 
@@ -31,9 +36,15 @@ Simple countdown component for GrapesJS Editor
 * `labelMinutes` Minutes label text used in component, default 'minutes'
 * `labelSeconds` Seconds label text used in component, default 'seconds'
 
+
+
+
+
 ## Download
 
-* `npm i grapesjs-navbar` or `yarn add grapesjs-navbar`
+* `npm i grapesjs-component-countdown` or `yarn add grapesjs-component-countdown`
+
+
 
 
 
@@ -42,20 +53,22 @@ Simple countdown component for GrapesJS Editor
 ```html
 <link href="path/to/grapes.min.css" rel="stylesheet"/>
 <script src="path/to/grapes.min.js"></script>
-<script src="path/to/grapesjs-navbar.min.js"></script>
+<script src="path/to/grapesjs-component-countdown.min.js"></script>
 
 <div id="gjs"></div>
 
 <script type="text/javascript">
   var editor = grapesjs.init({
       container : '#gjs',
-      plugins: ['gjs-navbar'],
+      plugins: ['gjs-component-countdown'],
       pluginsOpts: {
-        'gjs-navbar': {/* ...options */}
+        'gjs-component-countdown': {/* ...options */}
       }
   });
 </script>
 ```
+
+
 
 
 
@@ -64,8 +77,8 @@ Simple countdown component for GrapesJS Editor
 Clone the repository
 
 ```sh
-$ git clone https://github.com/artf/grapesjs-navbar.git
-$ cd grapesjs-navbar
+$ git clone https://github.com/artf/grapesjs-component-countdown.git
+$ cd grapesjs-component-countdown
 ```
 
 Install it
@@ -85,6 +98,8 @@ Build before the commit. This will also increase the patch level version of the 
 ```sh
 $ npm run build
 ```
+
+
 
 
 
