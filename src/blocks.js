@@ -7,27 +7,27 @@ export default function(editor, opt = {}) {
   const bm = editor.BlockManager;
   const pfx = c.countdownClsPfx;
   const style = c.defaultStyle ? `<style>
-    .countdown {
+    .${pfx} {
       text-align: center;
       font-family: Helvetica, serif;
     }
 
-    .countdown-block {
+    .${pfx}-block {
       display: inline-block;
       margin: 0 10px;
       padding: 10px;
     }
 
-    .countdown-digit {
+    .${pfx}-digit {
       font-size: 5rem;
     }
 
-    .countdown-endtext {
+    .${pfx}-endtext {
       font-size: 5rem;
     }
 
-    .countdown-cont,
-    .countdown-block {
+    .${pfx}-cont,
+    .${pfx}-block {
       display: inline-block;
     }
   </style>` : '';

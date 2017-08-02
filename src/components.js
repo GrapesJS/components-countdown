@@ -96,7 +96,7 @@ export default function(editor, opt = {}) {
         this.listenTo(this.model, 'change:startfrom change:endText', this.updateScript);
         const comps = this.model.get('components');
 
-        // Add a basic countdown template if it's not yet initiliazed
+        // Add a basic countdown template if it's not yet initialized
         if (!comps.length) {
           comps.reset();
           comps.add(`
