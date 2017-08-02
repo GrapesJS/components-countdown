@@ -39,8 +39,7 @@ export default function(editor, opt = {}) {
           var secondEl = this.querySelector('[data-js=countdown-second]');
           var oldInterval = this.gjs_countdown_interval;
           if(oldInterval) {
-            console.log('old interval found');
-              oldInterval && clearInterval(oldInterval);
+            oldInterval && clearInterval(oldInterval);
           }
 
           var setTimer = function (days, hours, minutes, seconds) {
@@ -96,28 +95,32 @@ export default function(editor, opt = {}) {
       init() {
         this.listenTo(this.model, 'change:startfrom change:endText', this.updateScript);
         const comps = this.model.get('components');
-        comps.reset();
-        comps.add(`
-          <span data-js="countdown" class="${pfx}-cont">
-            <div class="${pfx}-block">
-              <div data-js="countdown-day" class="${pfx}-digit"></div>
-              <div class="${pfx}-label">${c.labelDays}</div>
-            </div>
-            <div class="${pfx}-block">
-              <div data-js="countdown-hour" class="${pfx}-digit"></div>
-              <div class="${pfx}-label">${c.labelHours}</div>
-            </div>
-            <div class="${pfx}-block">
-              <div data-js="countdown-minute" class="${pfx}-digit"></div>
-              <div class="${pfx}-label">${c.labelMinutes}</div>
-            </div>
-            <div class="${pfx}-block">
-              <div data-js="countdown-second" class="${pfx}-digit"></div>
-              <div class="${pfx}-label">${c.labelSeconds}</div>
-            </div>
-          </span>
-          <span data-js="countdown-endtext" class="${pfx}-endtext"></span>
-        `);
+
+        // Add a basic countdown template if it's not yet initiliazed
+        if (!comps.length) {
+          comps.reset();
+          comps.add(`
+            <span data-js="countdown" class="${pfx}-cont">
+              <div class="${pfx}-block">
+                <div data-js="countdown-day" class="${pfx}-digit"></div>
+                <div class="${pfx}-label">${c.labelDays}</div>
+              </div>
+              <div class="${pfx}-block">
+                <div data-js="countdown-hour" class="${pfx}-digit"></div>
+                <div class="${pfx}-label">${c.labelHours}</div>
+              </div>
+              <div class="${pfx}-block">
+                <div data-js="countdown-minute" class="${pfx}-digit"></div>
+                <div class="${pfx}-label">${c.labelMinutes}</div>
+              </div>
+              <div class="${pfx}-block">
+                <div data-js="countdown-second" class="${pfx}-digit"></div>
+                <div class="${pfx}-label">${c.labelSeconds}</div>
+              </div>
+            </span>
+            <span data-js="countdown-endtext" class="${pfx}-endtext"></span>
+          `);
+        }
 
       }
     }),
