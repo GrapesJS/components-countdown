@@ -59,7 +59,7 @@ export default function(editor, opt = {}) {
 
             setTimer(days, hours, minutes, seconds);
 
-            // If the count down is finished, write some text
+            /* If the count down is finished, write some text */
             if (distance < 0) {
               clearInterval(interval);
               endTextEl.innerHTML = endTxt;
