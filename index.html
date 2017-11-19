@@ -2,12 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>GrapesJS Plugin</title>
-    <link rel="stylesheet" href="./node_modules/grapesjs/dist/css/grapes.min.css">
-
-    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-    <!-- <script src="./node_modules/grapesjs/dist/grapes.min.js"></script> -->
-    <script src="private/grapes.min.js"></script>
+    <title>GrapesJS Countdown Plugin</title>
+    <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/grapesjs"></script>
     <script src="dist/grapesjs-component-countdown.min.js"></script>
     <style>
       body, html {
@@ -17,11 +14,7 @@
     </style>
   </head>
   <body>
-
-    <div id="gjs" style="height:0px; overflow:hidden">
-    </div>
-
-
+    <div id="gjs" style="height:0px; overflow:hidden"></div>
     <script type="text/javascript">
       var editor = grapesjs.init({
         height: '100%',
@@ -35,7 +28,6 @@
           'gjs-component-countdown': {}
         }
       });
-      window.editor = editor;
     </script>
   </body>
 </html>
