@@ -55,7 +55,7 @@ export default function(editor, opt = {}) {
             var distance = countDownDate - now;
             var days = Math.floor(distance / 86400000);
             var hours = Math.floor((distance % 86400000) / 3600000);
-            var minutes = Math.floor((distance % 360000) / 60000);
+            var minutes = Math.floor((distance % 3600000) / 60000);
             var seconds = Math.floor((distance % 60000) / 1000);
 
             setTimer(days, hours, minutes, seconds);
