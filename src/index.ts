@@ -1,5 +1,4 @@
 import type grapesjs from 'grapesjs';
-// import loadComponents from './components';
 
 export type PluginOptions = {
   /**
