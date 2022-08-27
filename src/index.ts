@@ -22,66 +22,72 @@ export type PluginOptions = {
   block?: Partial<grapesjs.BlockOptions>;
 
   /**
-   * Object to extend the default tooltip block. Pass a falsy value to avoid adding the block.
+   * Object to extend the default component properties.
    * @example
-   * { label: 'Tooltip', category: 'Extra', ... }
+   * { name: 'Countdown', droppable: false, ... }
    */
-  blockTooltip?: Partial<grapesjs.BlockOptions>;
+  props?: grapesjs.ComponentDefinition;
 
   /**
-   * Object to extend the default tooltip properties.
-   * @example
-   * { name: 'Tooltip', droppable: false, ... }
+   * Custom CSS styles for the component. This will replace the default one.
+   * @default ''
    */
-  propsTooltip?: grapesjs.ComponentDefinition;
+   style?: string,
 
   /**
-   * A function which allows to extend default traits by receiving the original array and returning a new one.
-   */
-  extendTraits?: (traits: TraitsOptions) => TraitsOptions,
-
-  /**
-   * Tooltip attribute prefix.
-   * @default 'data-tooltip'
-   */
-  attrTooltip?: string,
-
-  /**
-   * Tooltip class prefix.
-   * @default 'tooltip-component'
-   */
-  classTooltip?: string,
-
-  /**
-   * Custom CSS styles for the tooltip component, this will replace the default one.
-   * @default 'tooltip-component'
-   */
-  style?: string,
-
-  /**
-   * Additional CSS styles for the tooltip component.
+   * Additional CSS styles for the component. These will be appended to the default one.
    * @default 'tooltip-component'
    */
   styleAdditional?: string,
 
   /**
-   * Make all tooltip relative classes private.
-   * @default true
+   * Default start time.
+   * @default ''
+   * @example '2018-01-25 00:00'
    */
-  privateClasses?: boolean,
+  startTime?: string,
 
   /**
-   * Indicate if the tooltip can be styled.
-   * You can pass an array of which proprties can be styled.
-   * @example ['color', 'background-color']
+   * Text to show when the countdown is ended.
+   * @default 'EXPIRED'
    */
-  stylableTooltip?: string[] | boolean,
+  endText?: string,
 
   /**
-   * If true, force the tooltip to be shown when the default "Style tooltip" trait button is clicked.
-   * @default true
+   * Date input type, eg. `date`, `datetime-local`
+   * @default 'date'
    */
-  showTooltipOnStyle?: boolean,
+  dateInputType?: string,
+
+  /**
+   * Days label text used in component.
+   * @default 'days'
+   */
+  labelDays?: string,
+
+  /**
+   * Hours label text used in component.
+   * @default 'hours'
+   */
+  labelHours?: string,
+
+  /**
+   * Minutes label text used in component.
+   * @default 'minutes'
+   */
+  labelMinutes?: string,
+
+  /**
+   * Seconds label text used in component.
+   * @default 'seconds'
+   */
+  labelSeconds?: string,
+
+  /**
+   * Countdown component class prefix.
+   * @default 'countdown'
+   */
+  classPrefix?: string,
 };
 
 const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
@@ -89,36 +95,17 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
     id: 'countdown',
     label: 'Countdown',
     block: {},
-
-    // Default style
-    defaultStyle: true,
-
-    // Default start time, eg. '2018-01-25 00:00'
+    props: {},
+    style: '',
+    styleAdditional: '',
     startTime: '',
-
-    // Text to show when the countdown is ended
     endText: 'EXPIRED',
-
-    // Date input type, eg, 'date', 'datetime-local'
     dateInputType: 'date',
-
-    // Countdown class prefix
-    countdownClsPfx: 'countdown',
-
-    // Countdown label
-    labelCountdown: 'Countdown',
-
-    // Days label text used in component
     labelDays: 'days',
-
-    // Hours label text used in component
     labelHours: 'hours',
-
-    // Minutes label text used in component
     labelMinutes: 'minutes',
-
-    // Seconds label text used in component
     labelSeconds: 'seconds',
+    classPrefix: 'countdown',
     ...opts,
   };
 

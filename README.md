@@ -20,6 +20,9 @@ Simple countdown component for GrapesJS Editor
 
 * Added `id`
 * Removed `blocks` and `labelCountdownCategory` options in favor of `block`.
+* Removed `defaultStyle` options in favor of `style`.
+* Removed `labelCountdown` options in favor of `label`.
+* Removed `countdownClsPfx` options in favor of `classPrefix`.
 
 
 ## Options
@@ -27,22 +30,17 @@ Simple countdown component for GrapesJS Editor
 | Option | Description | Default |
 |-|-|-
 | `id` | The ID used to create the block and component. | `countdown` |
+| `label` | The label used for the block and the component. | `Countdown` |
 | `block` | Object to extend the default block, eg. `{ label: 'Countdown', category: 'Extra', ... }`. Pass a falsy value to avoid adding the block. | `{}` |
-
-
-
-* `blocks` Which blocks to add, default: `['countdown']` (all)
-* `defaultStyle` Add default style to blocks, default: true
-* `startTime` Default start time, eg. '2018-01-25 00:00', default: ''
-* `endText` Text to show when the countdown is ended, default: 'EXPIRED'
-* `dateInputType` Date input type, eg, 'date', 'datetime-local', default: 'date'
-* `countdownClsPfx` Countdown class prefix, default: 'countdown'
-* `labelCountdown` Countdown label, default 'Countdown'
-* `labelCountdownCategory` Countdown category label, default 'Extra'
-* `labelDays` Days label text used in component, default 'days'
-* `labelHours` Hours label text used in component, default 'hours'
-* `labelMinutes` Minutes label text used in component, default 'minutes'
-* `labelSeconds` Seconds label text used in component, default 'seconds'
+| `props` | Object to extend the default component properties., eg. `{ name: 'Countdown', droppable: false, ... }`. | `{}` |
+| `startTime` | Default start time, eg. `2030-01-25 00:00`. | `''` |
+| `endText` | Text to show when the countdown is ended. | `'EXPIRED'` |
+| `dateInputType` | Date input type, eg. `date`, `datetime-local` | `'date'` |
+| `labelDays` | Days label text used in component. | `'days'` |
+| `labelHours` | Hours label text used in component. | `'hours'` |
+| `labelMinutes` | Minutes label text used in component. | `'minutes'` |
+| `labelSeconds` | Seconds label text used in component. | `'seconds'` |
+| `classPrefix` | Countdown component class prefix. | `'countdown'` |
 
 
 
