@@ -13,11 +13,12 @@ Simple countdown component for GrapesJS Editor
 
 ## Summary
 
-* Plugin name: `gjs-component-countdown`
+* Plugin name: `grapesjs-component-countdown`
 * Components: `countdown`
 * Blocks: `countdown`
 
 
+* Switched the plugin name from `gjs-component-countdown` to `grapesjs-component-countdown`
 * Added `id`
 * Removed `blocks` and `labelCountdownCategory` options in favor of `block`.
 * Removed `defaultStyle` options in favor of `style`.

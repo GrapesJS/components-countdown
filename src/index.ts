@@ -182,6 +182,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
     model: {
       defaults: {
         startfrom: options.startTime,
+        classes: [pfx],
         endText: options.endText,
         droppable: false,
         script: coundownScript,
@@ -217,74 +218,32 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
           </span>
           <span data-js="countdown-endtext" class="${pfx}-endtext"></span>
         `,
+        styles: `
+          .${pfx} {
+            text-align: center;
+          }
+
+          .${pfx}-block {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px;
+          }
+
+          .${pfx}-digit {
+            font-size: 5rem;
+          }
+
+          .${pfx}-endtext {
+            font-size: 5rem;
+          }
+
+          .${pfx}-cont {
+            display: inline-block;
+          }
+        `,
       },
     },
-    view: {
-      init() {
-        // this.listenTo(this.model, 'change:startfrom change:endText', this.updateScript);
-        const comps = this.model.get('components');
-
-        // // Add a basic countdown template if it's not yet initialized
-        // if (comps && !comps?.length) {
-        //   comps.reset();
-        //   comps.add(`
-        //     <span data-js="countdown" class="${pfx}-cont">
-        //       <div class="${pfx}-block">
-        //         <div data-js="countdown-day" class="${pfx}-digit"></div>
-        //         <div class="${pfx}-label">${c.labelDays}</div>
-        //       </div>
-        //       <div class="${pfx}-block">
-        //         <div data-js="countdown-hour" class="${pfx}-digit"></div>
-        //         <div class="${pfx}-label">${c.labelHours}</div>
-        //       </div>
-        //       <div class="${pfx}-block">
-        //         <div data-js="countdown-minute" class="${pfx}-digit"></div>
-        //         <div class="${pfx}-label">${c.labelMinutes}</div>
-        //       </div>
-        //       <div class="${pfx}-block">
-        //         <div data-js="countdown-second" class="${pfx}-digit"></div>
-        //         <div class="${pfx}-label">${c.labelSeconds}</div>
-        //       </div>
-        //     </span>
-        //     <span data-js="countdown-endtext" class="${pfx}-endtext"></span>
-        //   `);
-        // }
-
-      }
-    },
   });
-
-  /**
-const pfx = c.countdownClsPfx;
-`<style>
-    .${pfx} {
-      text-align: center;
-      font-family: Helvetica, serif;
-    }
-
-    .${pfx}-block {
-      display: inline-block;
-      margin: 0 10px;
-      padding: 10px;
-    }
-
-    .${pfx}-digit {
-      font-size: 5rem;
-    }
-
-    .${pfx}-endtext {
-      font-size: 5rem;
-    }
-
-    .${pfx}-cont,
-    .${pfx}-block {
-      display: inline-block;
-    }
-  </style>`
-   */
-
-  // Add components
-  // loadComponents(editor, options);
 };
 
 export default plugin;
