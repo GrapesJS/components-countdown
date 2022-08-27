@@ -1,11 +1,8 @@
-import grapesjs from 'grapesjs';
 import loadComponents from './components';
 import loadBlocks from './blocks';
-import {
-  countdownRef
-} from './consts';
+import { countdownRef } from './consts';
 
-export default grapesjs.plugins.add('gjs-component-countdown', (editor, opts = {}) => {
+const plugin = (editor, opts = {}) => {
   let c = opts;
 
   let defaults = {
@@ -56,5 +53,6 @@ export default grapesjs.plugins.add('gjs-component-countdown', (editor, opts = {
 
   // Add components
   loadBlocks(editor, c);
+};
 
-});
+export default plugin;
