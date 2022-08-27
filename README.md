@@ -18,10 +18,18 @@ Simple countdown component for GrapesJS Editor
 * Blocks: `countdown`
 
 
-
+* Added `id`
+* Removed `blocks` and `labelCountdownCategory` options in favor of `block`.
 
 
 ## Options
+
+| Option | Description | Default |
+|-|-|-
+| `id` | The ID used to create the block and component. | `countdown` |
+| `block` | Object to extend the default block, eg. `{ label: 'Countdown', category: 'Extra', ... }`. Pass a falsy value to avoid adding the block. | `{}` |
+
+
 
 * `blocks` Which blocks to add, default: `['countdown']` (all)
 * `defaultStyle` Add default style to blocks, default: true
