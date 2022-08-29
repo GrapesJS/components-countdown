@@ -18,14 +18,6 @@ Simple countdown component for GrapesJS Editor
 * Blocks: `countdown`
 
 
-* Switched the plugin name from `gjs-component-countdown` to `grapesjs-component-countdown`
-* Added `id`
-* Removed `blocks` and `labelCountdownCategory` options in favor of `block`.
-* Removed `defaultStyle` options in favor of `style`.
-* Removed `labelCountdown` options in favor of `label`.
-* Removed `countdownClsPfx` options in favor of `classPrefix`.
-
-
 ## Options
 
 | Option | Description | Default |
@@ -51,7 +43,13 @@ Simple countdown component for GrapesJS Editor
 
 ## Download
 
-* `npm i grapesjs-component-countdown` or `yarn add grapesjs-component-countdown`
+* CDN
+  * `https://unpkg.com/grapesjs-component-countdown`
+* NPM
+  * `npm i grapesjs-component-countdown`
+* GIT
+  * `git clone https://github.com/artf/grapesjs-component-countdown.git`
+
 
 
 
@@ -59,9 +57,10 @@ Simple countdown component for GrapesJS Editor
 
 ## Usage
 
+Directly in the browser
 ```html
-<link href="path/to/grapes.min.css" rel="stylesheet"/>
-<script src="path/to/grapes.min.js"></script>
+<link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet"/>
+<script src="https://unpkg.com/grapesjs"></script>
 <script src="path/to/grapesjs-component-countdown.min.js"></script>
 
 <div id="gjs"></div>
@@ -69,12 +68,32 @@ Simple countdown component for GrapesJS Editor
 <script type="text/javascript">
   var editor = grapesjs.init({
       container : '#gjs',
-      plugins: ['gjs-component-countdown'],
+      // ...
+      plugins: ['grapesjs-component-countdown'],
       pluginsOpts: {
-        'gjs-component-countdown': {/* ...options */}
+        'grapesjs-component-countdown': { /* options */ }
       }
   });
 </script>
+```
+
+Modern javascript
+```js
+import grapesjs from 'grapesjs';
+import pluginCountdown from 'grapesjs-component-countdown';
+
+const editor = grapesjs.init({
+  container : '#gjs',
+  // ...
+  plugins: [pluginCountdown],
+  pluginsOpts: {
+    [pluginCountdown]: { /* options */ }
+  }
+  // or
+  plugins: [
+    editor => pluginCountdown(editor, { /* options */ }),
+  ],
+});
 ```
 
 
