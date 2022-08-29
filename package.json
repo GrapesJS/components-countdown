@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-component-countdown",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "description": "Simple countdown component for the GrapesJS Editor",
   "main": "dist/index.js",
   "files": [
