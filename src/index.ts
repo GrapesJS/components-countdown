@@ -89,6 +89,12 @@ export type PluginOptions = {
   classPrefix?: string,
 };
 
+type TElement = HTMLElement & { __gjsCountdownInterval: NodeJS.Timer };
+
+declare global {
+  interface Window { __gjsCountdownIntervals: TElement[]; }
+}
+
 const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
   const options: PluginOptions = {
     id: 'countdown',
@@ -127,11 +133,11 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
     });
   };
 
-  const coundownScript = function(props: any) {
+  const coundownScript = function(props: Record<string, any>) {
     const startfrom: string = props.startfrom;
     const endTxt: string = props.endText;
     // @ts-ignore
-    const el: HTMLElement & { gjs_countdown_interval: NodeJS.Timer } = this;
+    const el: TElement = this;
     const countDownDate = new Date(startfrom).getTime();
     const countdownEl = el.querySelector('[data-js=countdown]') as HTMLElement;
     const endTextEl = el.querySelector('[data-js=countdown-endtext]') as HTMLElement;
@@ -139,8 +145,19 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
     const hourEl = el.querySelector('[data-js=countdown-hour]')!;
     const minuteEl = el.querySelector('[data-js=countdown-minute]')!;
     const secondEl = el.querySelector('[data-js=countdown-second]')!;
-    const oldInterval = el.gjs_countdown_interval;
+    const oldInterval = el.__gjsCountdownInterval;
     oldInterval && clearInterval(oldInterval);
+
+    const connected: TElement[] = window.__gjsCountdownIntervals || [];
+    const toClean: TElement[] = [];
+    connected.forEach((item: TElement) => {
+      if (!item.isConnected) {
+        clearInterval(item.__gjsCountdownInterval);
+        toClean.push(item);
+      }
+    });
+    connected.indexOf(el) < 0 && connected.push(el);
+    window.__gjsCountdownIntervals = connected.filter(item => toClean.indexOf(item) < 0);
 
     const setTimer = function (days: number, hours: number, minutes: number, seconds: number) {
       dayEl.innerHTML = `${days < 10 ? '0' + days : days}`;
@@ -160,7 +177,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
       setTimer(days, hours, minutes, seconds);
 
       if (distance < 0) {
-        clearInterval(el.gjs_countdown_interval);
+        clearInterval(el.__gjsCountdownInterval);
         endTextEl.innerHTML = endTxt;
         countdownEl.style.display = 'none';
         endTextEl.style.display = '';
@@ -168,7 +185,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
     };
 
     if (countDownDate) {
-      el.gjs_countdown_interval = setInterval(moveTimer, 1000);
+      el.__gjsCountdownInterval = setInterval(moveTimer, 1000);
       endTextEl.style.display = 'none';
       countdownEl.style.display = '';
       moveTimer();
