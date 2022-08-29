@@ -31,7 +31,7 @@ export type PluginOptions = {
    * Custom CSS styles for the component. This will replace the default one.
    * @default ''
    */
-   style?: string,
+  style?: string,
 
   /**
    * Additional CSS styles for the component. These will be appended to the default one.
@@ -114,7 +114,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
     ...opts,
   };
 
-  const { block } = options;
+  const { block, props } = options;
   const id = options.id!;
   const label = options.label!;
   const pfx = options.classPrefix!;
@@ -258,6 +258,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
             display: inline-block;
           }
         `,
+        ...props,
       },
     },
   });
