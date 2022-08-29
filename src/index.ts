@@ -35,7 +35,7 @@ export type PluginOptions = {
 
   /**
    * Additional CSS styles for the component. These will be appended to the default one.
-   * @default 'tooltip-component'
+   * @default ''
    */
   styleAdditional?: string,
 
@@ -114,7 +114,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
     ...opts,
   };
 
-  const { block, props } = options;
+  const { block, props, style } = options;
   const id = options.id!;
   const label = options.label!;
   const pfx = options.classPrefix!;
@@ -235,7 +235,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
           </span>
           <span data-js="countdown-endtext" class="${pfx}-endtext"></span>
         `,
-        styles: `
+        styles: (style || `
           .${pfx} {
             text-align: center;
           }
@@ -257,7 +257,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
           .${pfx}-cont {
             display: inline-block;
           }
-        `,
+        `) + (options.styleAdditional),
         ...props,
       },
     },

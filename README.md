@@ -34,6 +34,8 @@ Simple countdown component for GrapesJS Editor
 | `label` | The label used for the block and the component. | `Countdown` |
 | `block` | Object to extend the default block, eg. `{ label: 'Countdown', category: 'Extra', ... }`. Pass a falsy value to avoid adding the block. | `{}` |
 | `props` | Object to extend the default component properties., eg. `{ name: 'Countdown', droppable: false, ... }`. | `{}` |
+| `style` | Custom CSS styles for the component. This will replace the default one. | `''` |
+| `styleAdditional` | Additional CSS styles for the component. These will be appended to the default one. | `''` |
 | `startTime` | Default start time, eg. `2030-01-25 00:00`. | `''` |
 | `endText` | Text to show when the countdown is ended. | `'EXPIRED'` |
 | `dateInputType` | Date input type, eg. `date`, `datetime-local` | `'date'` |
