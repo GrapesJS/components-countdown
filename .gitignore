@@ -3,5 +3,6 @@ private/
 node_modules/
 dist/
 .eslintrc
+.npmrc
 *.log
 _index.html
