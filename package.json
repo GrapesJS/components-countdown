@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-component-countdown",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple countdown component for the GrapesJS Editor",
   "main": "dist/index.js",
   "files": [
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/artf/grapesjs-component-countdown.git"
+    "url": "https://github.com/GrapesJS/components-countdown.git"
   },
   "keywords": [
     "grapesjs",
