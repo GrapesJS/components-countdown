@@ -1,4 +1,4 @@
-import type grapesjs from 'grapesjs';
+import type { Plugin, BlockProperties, ComponentDefinition } from 'grapesjs';
 
 export type PluginOptions = {
   /**
@@ -18,14 +18,14 @@ export type PluginOptions = {
    * @example
    * { label: 'Countdown', category: 'Extra', ... }
    */
-  block?: Partial<grapesjs.BlockOptions>;
+  block?: Partial<BlockProperties>;
 
   /**
    * Object to extend the default component properties.
    * @example
    * { name: 'Countdown', droppable: false, ... }
    */
-  props?: grapesjs.ComponentDefinition;
+  props?: ComponentDefinition;
 
   /**
    * Custom CSS styles for the component. This will replace the default one.
@@ -95,7 +95,7 @@ declare global {
   interface Window { __gjsCountdownIntervals: TElement[]; }
 }
 
-const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
+const plugin: Plugin<PluginOptions> = (editor, opts = {}) => {
   const options: PluginOptions = {
     id: 'countdown',
     label: 'Countdown',
@@ -214,6 +214,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts = {}) => {
           name: 'endText',
           changeProp: true,
         }],
+        // @ts-ignore
         components: `
           <span data-js="countdown" class="${pfx}-cont">
             <div class="${pfx}-block">
